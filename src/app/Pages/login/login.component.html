@@ -30,6 +30,8 @@
                   <div data-mdb-input-init class="form-outline mb-4">
                     <input
                       type="email"
+                      name="email"
+                      [(ngModel)]="loginObj.email"
                       id="form2Example17"
                       class="form-control form-control-lg"
                     />
@@ -43,6 +45,8 @@
                       type="password"
                       id="form2Example27"
                       class="form-control form-control-lg"
+                      name="passWord"
+                      [(ngModel)]="loginObj.password"
                     />
                     <label class="form-label" for="form2Example27"
                       >Password</label
@@ -55,6 +59,7 @@
                       data-mdb-ripple-init
                       class="btn btn-dark btn-lg btn-block"
                       type="button"
+                      (click)="loginUser()"
                     >
                       Login
                     </button>
