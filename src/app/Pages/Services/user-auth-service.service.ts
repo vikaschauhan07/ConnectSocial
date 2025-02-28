@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment.development';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class UserAuthServiceService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService 
   ) { }
   login(credentials: UserLogin) {
     console.log(this.apiUrl)
@@ -21,6 +23,7 @@ export class UserAuthServiceService {
       .subscribe({
         complete: () => {},
         error: (error) => {
+          this.toastr.error(error.error.message);
           return error;
         },
         next: (data: any) => {
